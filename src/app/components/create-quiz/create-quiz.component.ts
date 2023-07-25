@@ -32,10 +32,10 @@ export class CreateQuizComponent implements OnInit {
       next: (response) => {
         this.trivia = response;
         let questionNumber = 1;
-        this.trivia.results.forEach(x => {
-          x.questionNumber = questionNumber;
+        this.trivia.results.forEach(result => {
+          result.questionNumber = questionNumber;
           //randomize incorrect and correct answer
-          x.answers = this.shuffle(x.incorrect_answers.concat(x.correct_answer));
+          result.answers = this.shuffle(result.incorrect_answers.concat(result.correct_answer));
           questionNumber++;
         });
       }
