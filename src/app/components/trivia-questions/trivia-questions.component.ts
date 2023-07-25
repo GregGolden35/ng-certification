@@ -20,6 +20,7 @@ export class TriviaQuestionsComponent implements OnInit {
 
   triviaAnswerClick(event, answer, questionNumber, answerIndex) {
     let questionBeingAnswered = this.trivia?.results?.find(x => x.questionNumber == questionNumber + 1);
+    //in case user has changed their answer to same question,
     //remove prior answers from same question. only add the most current answer for a question
     this.selectedAnswers = this.selectedAnswers.filter( function( selectedAnswer ) {
       return !questionBeingAnswered?.answers?.includes( selectedAnswer );

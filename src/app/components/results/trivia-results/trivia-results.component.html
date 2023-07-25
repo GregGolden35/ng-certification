@@ -1,1 +1,18 @@
-<p>trivia-results works!</p>
+<div class="container-fluid">
+    <div class="panel panel-default">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let question of trivia?.results; let i = index">
+            <div [innerHTML]="question.question"></div>
+        <div *ngFor="let answer of question.answers; let j = index">
+            <button type="button" class="btn trivia-answer" [innerHTML]="answer" 
+            [ngClass]="question.correct_index == j ? 'btn-success': question.selected_index == j ? 'btn-danger' : ''">
+            </button>
+        </div>
+      </li>          
+      </ul>
+      <div [ngClass]="{'good-result': totalAnswersCorrect > 3, 'okay-result': totalAnswersCorrect > 1 && totalAnswersCorrect < 4, 'bad-result': totalAnswersCorrect < 2}">
+        You scored {{totalAnswersCorrect}} out of {{trivia?.results?.length}}
+      </div>
+      <button type="button" class="btn btn-primary btn-lg" routerLink="/create-quiz">Create a new quiz</button>
+    </div>
+</div>

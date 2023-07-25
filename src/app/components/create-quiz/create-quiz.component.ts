@@ -27,10 +27,6 @@ export class CreateQuizComponent implements OnInit {
     let categoryId = this.formGroup.get('category')?.value;
     let difficulty = this.formGroup.get('difficulty')?.value;
 
-    const shuffle = (array: string[]) => { 
-      return array.sort(() => Math.random() - 0.5); 
-    }; 
-
     this.quizService.getQuestions(categoryId, difficulty)
     .subscribe({
       next: (response) => {
@@ -38,10 +34,15 @@ export class CreateQuizComponent implements OnInit {
         let questionNumber = 1;
         this.trivia.results.forEach(x => {
           x.questionNumber = questionNumber;
-          x.answers = shuffle(x.incorrect_answers.concat(x.correct_answer));
+          //randomize incorrect and correct answer
+          x.answers = this.shuffle(x.incorrect_answers.concat(x.correct_answer));
           questionNumber++;
         });
       }
     }); 
+  }
+
+  private shuffle(array: string[]) {
+    return array.sort(() => Math.random() - 0.5); 
   }
 }
