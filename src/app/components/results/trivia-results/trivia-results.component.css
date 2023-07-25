@@ -1,0 +1,11 @@
+.good-result {
+    background-color: green;
+}
+
+.okay-result {
+    background-color: yellow;
+}
+
+.bad-result {
+    background-color: red;
+}
