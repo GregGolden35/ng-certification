@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
+import { TriviaResultsComponent } from './components/results/trivia-results/trivia-results.component';
 
 
+
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'create-quiz' },
+  { path: 'create-quiz', component: CreateQuizComponent },
+  { path: 'trivia-results', component: TriviaResultsComponent }
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
