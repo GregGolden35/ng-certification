@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IQuestions } from '../../../models/question.interface';
 import { QuizService } from '../../../services/quiz.service';
 
@@ -15,9 +15,9 @@ export class TriviaResultsComponent implements OnInit {
   ngOnInit(): void {
     this.trivia = this.quizService.getTrivia();
     var totalCorrect = 0;
-    this.trivia?.results?.forEach(function(x) {
-      x.correct_index = x.answers.indexOf(x.correct_answer,0);
-      if(x.correct_index == x.selected_index) {
+    this.trivia?.results?.forEach(function(result) {
+      result.correct_index = result.answers.indexOf(result.correct_answer,0);
+      if(result.correct_index == result.selected_index) {
         totalCorrect++;
       }
     });
