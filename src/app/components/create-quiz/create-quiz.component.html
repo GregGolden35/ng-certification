@@ -1,1 +1,23 @@
-<p>create-quiz works!</p>
+<form [formGroup]="formGroup" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <select id="categorySelect" class="form-control" formControlName="category">
+          <option value="defaultCategory" selected>Select a category</option>
+          <option *ngFor="let category of categoryData()" [value]="category.id">
+              {{category.name}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select id="difficultySelect" class="form-control" formControlName="difficulty">
+          <option value="defaultDifficulty" selected>Select difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+      <button id="createBtn" type="button" class="btn btn-primary" (click)="createQuiz()">Create</button>
+    </div>  
+  </form>
+  <app-trivia-questions [trivia]="trivia"></app-trivia-questions>
+  

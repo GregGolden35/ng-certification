@@ -1,1 +1,14 @@
-<p>trivia-questions works!</p>
+<div class="container-fluid">
+    <div class="panel panel-default">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let question of trivia?.results; let questionNumber = index;">
+          <div [innerHTML]="question.question"></div>
+          <div *ngFor="let answer of question.answers; let answerIndex = index;">
+            <button type="button" [innerHTML]="answer" class="btn trivia-answer" [ngClass]="answerIndex == question.selected_index ? 'btn-success' : ''" 
+            (click)="triviaAnswerClick($event, answer, questionNumber, answerIndex)"></button>
+          </div>
+        </li>          
+      </ul>
+      <button type="button" class="btn btn-primary btn-lg" *ngIf="submitButtonVisible" (click)="submitClick()">Submit</button>
+    </div>
+  </div>
