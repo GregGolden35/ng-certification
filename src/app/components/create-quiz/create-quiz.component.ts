@@ -41,8 +41,16 @@ export class CreateQuizComponent implements OnInit {
       }
     }); 
   }
-
+  //Fisher-Yates algorithm to shuffle
   private shuffle(array: string[]) {
-    return array.sort(() => Math.random() - 0.5); 
+    for (var i = array.length - 1; i > 0; i--) {
+      const swapIndex = Math.floor(Math.random() * (i + 1))
+      const currentElement = array[i]
+      const elementToSwap = array[swapIndex]
+      array[i] = elementToSwap
+      array[swapIndex] = currentElement
+    }
+
+    return array; 
   }
 }
